@@ -47,6 +47,7 @@ def generate(args, Visual_Semantics, pipe):
         ).images
 
     return generated_images
+
 def main(args):
     pipe_l = DiffusionPipeline.from_pretrained(
         args.model_name,
@@ -57,10 +58,8 @@ def main(args):
     )
     pipe_l = pipe_l.to("cuda")
 
-    #print(pipe_l.device)
     with open(f'{args.result_path}', 'r') as file:
         Visual_Semantics = json.load(file)
-        #print(Visual_Semantics)
 
     generated_images = generate(args, Visual_Semantics, pipe_l)
     generated_images[0].save(f"{args.save_path}")
