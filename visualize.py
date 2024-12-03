@@ -38,10 +38,6 @@ def visualize_objects_layouts(visual_semantics, im):
     handles, labels = ax.get_legend_handles_labels()
     unique_labels = dict(zip(labels, handles))
     ax.legend(unique_labels.values(), unique_labels.keys(), loc='center left', bbox_to_anchor=(1, 0.5))
-
-    plt.xlabel('X Pixels')
-    plt.ylabel('Y Pixels')
-    plt.title('Object + Layout Visualization')
     plt.show()
 
 def visualize_scene_graph(scene_graph, vis_rel):
@@ -56,8 +52,8 @@ def visualize_scene_graph(scene_graph, vis_rel):
             G.add_node(sub, subset=0)
             G.add_node(obj, subset=1)
             G.add_edge(sub, obj, label=rel)
-        else:
-            G.add_node(parts[0], subset=0)
+        #else:
+        #    G.add_node(parts[0], subset=0)
     pos = nx.shell_layout(G)
     plt.figure(figsize=(10, 8))
     nx.draw(G, pos, with_labels=True, node_color='skyblue', node_size=2000, font_size=10, font_weight='bold',
@@ -65,7 +61,6 @@ def visualize_scene_graph(scene_graph, vis_rel):
     if vis_rel:
         edge_labels = nx.get_edge_attributes(G, 'label')
         nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=8, label_pos=0.2)
-    plt.title('Scene Graph Visualization')
     plt.show()
 
 def main(args):
