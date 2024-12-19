@@ -1,5 +1,5 @@
 # Transmit What You Need: A Task-Adaptive Semantic Communications for Visual Information
-[[ArXiv Preprint]](https://arxiv.org/abs/2412.13646)
+[[ArXiv Preprint](https://arxiv.org/abs/2412.13646)]
 ## Installation
 ```
 pip install -r requirements.txt
